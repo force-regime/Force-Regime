@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Force-Regime Downward Compatibility</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+
+/* ---------- global ---------- */
+*,
+*::before,
+*::after{
+  box-sizing:border-box;
+}
+
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  margin:0;
+  background:#fff;
+  color:#222;
+  line-height:1.65;
+}
+
+.container{
+  max-width:900px;
+  margin:auto;
+  padding:50px 20px;
+}
+
+h1{
+  font-size:3em;
+  margin-bottom:15px;
+  line-height:1.25;
+  font-weight:600;
+}
+
+.main-title{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:9px;
+  text-align:center; 
+}
+
+.hero-title{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:18px;
+  margin-bottom:10px;
+}
+
+.hero-icon{
+  height:60px;
+  opacity:.9;
+}
+
+.hero-text{
+  text-align:center;
+}
+
+.title-main{
+  font-size:3.2rem;
+  font-weight:700;
+  margin:0;
+  letter-spacing:.5px;
+}
+
+.title-sub{
+  font-size:1.35rem;
+  font-weight:400;
+  margin:6px 0 0 0;
+  color:#444;
+  line-height:1.4;
+  max-width:800px;
+}
+  
+.main-title img{ height:2.5em; }
+
+.authors{
+  text-align:center;
+  font-size:1.15em;
+}
+
+.affiliation{
+  text-align:center;
+  color:#666;
+  margin-bottom:28px;
+}
+
+/* ---------- buttons ---------- */
+.links{
+  text-align:center;
+  margin:30px 0 20px 0;
+}
+
+.links a{
+  display:inline-block;
+  margin:6px;
+  padding:11px 20px;
+  border-radius:9px;
+  text-decoration:none;
+  color:white;
+  background:#2d6cdf;
+  font-weight:600;
+  font-size:15px;
+  transition:.2s;
+}
+
+.links a:hover{
+  background:#1b4fb3;
+  transform:translateY(-1px);
+}
+
+.links a.disabled{
+  pointer-events:none;
+  cursor:default;
+  opacity:.45;
+}
+
+/* ---------- sections ---------- */
+.section{ margin-top:55px; }
+
+h2{
+  border-bottom:2px solid #eee;
+  padding-bottom:6px;
+  font-weight:600;
+}
+
+p{ font-size:17px; }
+
+/* ---------- subsection titles ---------- */
+.subsection-title{
+  font-size:1.15rem;
+  font-weight:700;
+  margin:34px 0 6px 0;
+  color:#222;
+}
+
+.subsection-note{
+  font-size:15px;
+  color:#555;
+  margin-top:0;
+  margin-bottom:18px;
+  line-height:1.55;
+}
+
+/* ---------- KPI cards ---------- */
+.kpi{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:14px;
+  margin-top:22px;
+}
+
+.kpi .card{
+  border:1px solid #eee;
+  border-radius:12px;
+  padding:16px;
+  background:#fff;
+  box-shadow:0 4px 18px rgba(0,0,0,.05);
+}
+
+.kpi .big{
+  font-size:20px;
+  font-weight:700;
+}
+
+.kpi .small{
+  font-size:13px;
+  color:#666;
+  margin-top:6px;
+}
+
+/* ---------- video ---------- */
+.video{
+  position:relative;
+  padding-bottom:56.25%;
+  height:0;
+  overflow:hidden;
+  border-radius:12px;
+  box-shadow:0 4px 18px rgba(0,0,0,.08);
+  background:#000;
+}
+
+.video iframe{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  border:0;
+}
+
+/* ---------- images ---------- */
+.teaser{
+  width:100%;
+  border-radius:12px;
+  box-shadow:0 4px 18px rgba(0,0,0,.08);
+}
+
+/* ---------- video grid ---------- */
+.yt-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:28px;
+}
+
+.yt-card{text-align:center;}
+
+.yt-wrap{
+  position:relative;
+  width:100%;
+  padding-bottom:56.25%;
+  border-radius:12px;
+  overflow:hidden;
+  box-shadow:0 4px 18px rgba(0,0,0,.08);
+  background:#000;
+}
+
+.yt-wrap iframe{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  border:0;
+}
+
+.yt-label{
+  margin-top:6px;
+  font-size:14px;
+  font-weight:600;
+  color:#333;
+}
+
+.section-caption{
+  margin-top:14px;
+  font-size:15px;
+  color:#444;
+  line-height:1.55;
+}
+
+/* ---------- footer ---------- */
+.footer{
+  text-align:center;
+  margin-top:70px;
+  font-size:.9em;
+  color:#888;
+}
+
+.resource-note{
+  text-align:center;
+  font-size:14px;
+  color:#777;
+  margin-top:10px;
+  font-style:italic;
+}
+
+/* ---------- responsive ---------- */
+@media (max-width:700px){
+  .yt-grid{ grid-template-columns:1fr; }
+  h1{ font-size:2.2em; }
+}
+
+</style>
+</head>
+
+<body>
+<div class="container">
+
+<h1 class="main-title">
+Force-Regime Downward Compatibility in Contact-Rich Bimanual Imitation Learning
+</h1>
+
+<div class="authors">Anonymous Authors</div>
+<div class="affiliation">Affiliation withheld for double-blind review</div>
+
+<div class="links">
+<a href="https://youtu.be/gi_7zxDIAPQ" target="_blank">Video</a>
+<a class="disabled">Hardware</a>
+<a class="disabled">Dataset</a>
+<a class="disabled">Paper</a>
+<a class="disabled">Code</a>
+</div>
+
+<div class="resource-note">
+Supplementary project page for anonymous review.
+</div>
+
+<!-- OVERVIEW -->
+<div class="section">
+<h2>Overview</h2>
+<p>
+Robot learning datasets are often curated for visual and semantic diversity, but contact-rich manipulation also requires coverage over hidden physical regimes. We study this issue in bimanual stopper removal, where the visual scene and task geometry remain nearly fixed while hidden pulling resistance changes.
+</p>
+
+<p>
+Our results reveal <strong>force-regime downward compatibility</strong>: policies trained under higher resistance transfer reliably to easier regimes, whereas lower-resistance policies fail upward. We further show that a few high-force demonstrations can substantially improve hard-regime reliability, suggesting hidden physical-regime coverage as a practical data-collection principle for contact-rich robot learning.
+</p>
+
+
+</div>
+
+<!-- MAIN VIDEO -->
+<div id="video" class="section">
+<h2>Project Video</h2>
+<div class="video">
+<iframe src="https://www.youtube.com/embed/gi_7zxDIAPQ" allowfullscreen></iframe>
+</div>
+
+<div class="section-caption">
+  <strong>Project Video.</strong>
+  Overview of the experimental platform, programmable pulling-force regimes, cross-regime policy evaluations, and real-bottle AP/NP validation.
+</div>
+</div>
+
+<!-- ===== Programmable Device Videos ===== -->
+<div id="programmable-videos" class="section">
+<h2>Programmable Device Cross-Regime Videos</h2>
+
+<p>
+The following videos show representative ACT policy rollouts on the programmable stopper-removal device.
+Rows correspond to the training force regime and columns correspond to the test force regime.
+These qualitative results complement the train--test force-regime matrix by visualizing both in-regime execution and off-diagonal transfer.
+</p>
+
+<div class="subsection-title">3 N-Trained Policy</div>
+<div class="subsection-note">
+The policy is trained under the easier 3 N force regime and tested across 0, 3, 6, and 9 N hidden pulling resistance.
+</div>
+
+<div class="yt-grid">
+
+<div class="yt-card"><div class="yt-wrap">
+<iframe
+  id="yt-3n-0n"
+  class="yt-player"
+  src="https://www.youtube.com/embed/3nCS5D1Bua0?enablejsapi=1&mute=1&playsinline=1&rel=0&modestbranding=1"
+  allow="autoplay; encrypted-media"
+  allowfullscreen>
+</iframe>
+</div><div class="yt-label">3 N-Trained Policy Tested under 0 N Resistance</div></div>
+
+<div class="yt-card"><div class="yt-wrap">
+<iframe
+  id="yt-3n-3n"
+  class="yt-player"
+  src="https://www.youtube.com/embed/tlnyckENcog?enablejsapi=1&mute=1&playsinline=1&rel=0&modestbranding=1"
+  allow="autoplay; encrypted-media"
+  allowfullscreen>
+</iframe>
+</div><div class="yt-label">In-Regime Execution: 3 N-Trained Policy Tested under 3 N Resistance</div></div>
+
+<div class="yt-card"><div class="yt-wrap">
+<iframe
+  id="yt-3n-6n"
+  class="yt-player"
+  src="https://www.youtube.com/embed/Uqu3Ijqecrw?enablejsapi=1&mute=1&playsinline=1&rel=0&modestbranding=1"
+  allow="autoplay; encrypted-media"
+  allowfullscreen>
+</iframe>
+</div><div class="yt-label">Upward Transfer: 3 N-Trained Policy Tested under 6 N Resistance</div></div>
+
+<div class="yt-card"><div class="yt-wrap">
+<iframe
+  id="yt-3n-9n"
+  class="yt-player"
+  src="https://www.youtube.com/embed/srl3XB_VHSI?enablejsapi=1&mute=1&playsinline=1&rel=0&modestbranding=1"
+  allow="autoplay; encrypted-media"
+  allowfullscreen>
+</iframe>
+</div><div class="yt-label">Upward Transfer Failure: 3 N-Trained Policy Tested under 9 N Resistance</div></div>
+
+</div>
+
+<div class="section-caption">
+  <strong>3 N-Trained Policy.</strong>
+  The lower-force policy succeeds in easier regimes but fails as the hidden pulling resistance increases, illustrating limited upward transfer.
+</div>
+
+<div class="subsection-title">9 N-Trained Policy</div>
+<div class="subsection-note">
+The policy is trained under the harder 9 N force regime and tested across easier and in-regime resistance conditions.
+</div>
+
+<div class="yt-grid">
+
+<div class="yt-card"><div class="yt-wrap">
+<iframe
+  id="yt-9n-0n"
+  class="yt-player"
+  src="https://www.youtube.com/embed/Lt2-2X9F7wk?enablejsapi=1&mute=1&playsinline=1&rel=0&modestbranding=1"
+  allow="autoplay; encrypted-media"
+  allowfullscreen>
+</iframe>
+</div><div class="yt-label">Downward Transfer: 9 N-Trained Policy Tested under 0 N Resistance</div></div>
+
+<div class="yt-card"><div class="yt-wrap">
+<iframe
+  id="yt-9n-3n"
+  class="yt-player"
+  src="https://www.youtube.com/embed/Of9iHqqWSSw?enablejsapi=1&mute=1&playsinline=1&rel=0&modestbranding=1"
+  allow="autoplay; encrypted-media"
+  allowfullscreen>
+</iframe>
+</div><div class="yt-label">Downward Transfer: 9 N-Trained Policy Tested under 3 N Resistance</div></div>
+
+<div class="yt-card"><div class="yt-wrap">
+<iframe
+  id="yt-9n-6n"
+  class="yt-player"
+  src="https://www.youtube.com/embed/3grfxw67uD8?enablejsapi=1&mute=1&playsinline=1&rel=0&modestbranding=1"
+  allow="autoplay; encrypted-media"
+  allowfullscreen>
+</iframe>
+</div><div class="yt-label">Downward Transfer: 9 N-Trained Policy Tested under 6 N Resistance</div></div>
+
+<div class="yt-card"><div class="yt-wrap">
+<iframe
+  id="yt-9n-9n"
+  class="yt-player"
+  src="https://www.youtube.com/embed/_Dgg9G6eKDE?enablejsapi=1&mute=1&playsinline=1&rel=0&modestbranding=1"
+  allow="autoplay; encrypted-media"
+  allowfullscreen>
+</iframe>
+</div><div class="yt-label">In-Regime Execution: 9 N-Trained Policy Tested under 9 N Resistance</div></div>
+
+</div>
+
+<div class="section-caption">
+  <strong>9 N-Trained Policy.</strong>
+  The higher-force policy transfers reliably to lower-resistance regimes while remaining successful in its original 9 N regime, illustrating downward compatibility.
+</div>
+
+</div>
+
+<!-- ===== Real-Bottle AP/NP Videos ===== -->
+<div id="real-bottle-videos" class="section">
+<h2>Real-Bottle AP/NP Validation Videos</h2>
+
+<p>
+We further evaluate cross-condition transfer on a real wine bottle with a pumpable vacuum stopper.
+The atmospheric-pressure condition uses 0 pump cycles, while the negative-pressure condition uses 70 pump cycles before each trial, creating higher suction-related removal resistance.
+</p>
+
+<div class="subsection-title">AP-Trained Policy</div>
+<div class="subsection-note">
+The policy is trained under atmospheric pressure with 0 pump cycles and tested under both AP and NP conditions.
+</div>
+
+<div class="yt-grid">
+
+<div class="yt-card"><div class="yt-wrap">
+<iframe
+  id="yt-AP-AP"
+  class="yt-player"
+  src="https://www.youtube.com/embed/ginMLkt15Kc?enablejsapi=1&mute=1&playsinline=1&rel=0&modestbranding=1"
+  allow="autoplay; encrypted-media"
+  allowfullscreen>
+</iframe>
+</div><div class="yt-label">In-Regime Real-Bottle Execution: AP-Trained Policy Tested under 0-Pump AP</div></div>
+
+<div class="yt-card"><div class="yt-wrap">
+<iframe
+  id="yt-AP-NP"
+  class="yt-player"
+  src="https://www.youtube.com/embed/MQDoPbmi6PE?enablejsapi=1&mute=1&playsinline=1&rel=0&modestbranding=1"
+  allow="autoplay; encrypted-media"
+  allowfullscreen>
+</iframe>
+</div><div class="yt-label">Real-Bottle Upward Transfer: 0-Pump AP-Trained Policy Tested under 70-Pump NP</div></div>
+
+</div>
+
+<div class="section-caption">
+  <strong>AP-Trained Policy.</strong>
+  The easier AP-trained policy succeeds in-regime but rarely succeeds when tested under the harder NP condition.
+</div>
+
+<div class="subsection-title">NP-Trained Policy</div>
+<div class="subsection-note">
+The policy is trained under 70-pump negative pressure and tested under both AP and NP conditions.
+</div>
+
+<div class="yt-grid">
+
+<div class="yt-card"><div class="yt-wrap">
+<iframe
+  id="yt-NP-AP"
+  class="yt-player"
+  src="https://www.youtube.com/embed/S44IkBpVMkw?enablejsapi=1&mute=1&playsinline=1&rel=0&modestbranding=1"
+  allow="autoplay; encrypted-media"
+  allowfullscreen>
+</iframe>
+</div><div class="yt-label">Real-Bottle Downward Transfer: 70-Pump NP-Trained Policy Tested under 0-Pump AP</div></div>
+
+<div class="yt-card"><div class="yt-wrap">
+<iframe
+  id="yt-NP-NP"
+  class="yt-player"
+  src="https://www.youtube.com/embed/yIyjBJyEsAY?enablejsapi=1&mute=1&playsinline=1&rel=0&modestbranding=1"
+  allow="autoplay; encrypted-media"
+  allowfullscreen>
+</iframe>
+</div><div class="yt-label">In-Regime Real-Bottle Execution: NP-Trained Policy Tested under 70-Pump Negative Pressure</div></div>
+
+</div>
+
+<div class="section-caption">
+  <strong>NP-Trained Policy.</strong>
+  The harder NP-trained policy transfers reliably to the easier AP condition while remaining successful under NP, matching the programmable-device harder-to-easier trend.
+</div>
+
+</div>
+
+<div class="section">
+  <h2>Citation</h2>
+  <pre>
+@article{ForceRegime2026,
+title={Force-Regime Downward Compatibility in Contact-Rich Bimanual Imitation Learning},
+author={Anonymous Authors},
+journal={Under Review},
+year={2026}
+}
+  </pre>
+</div>
+
+<div class="footer">
+  Anonymous project page for supplementary material.
+</div>
+
+</div>
+
+<script>
+  // Load YouTube IFrame API
+  var tag = document.createElement("script");
+  tag.src = "https://www.youtube.com/iframe_api";
+  document.body.appendChild(tag);
+
+  var players = {};
+
+  function onYouTubeIframeAPIReady() {
+    document.querySelectorAll(".yt-player").forEach(function(iframe) {
+      players[iframe.id] = new YT.Player(iframe.id, {
+        events: {
+          "onReady": function(event) {
+            event.target.mute();
+          }
+        }
+      });
+    });
+
+    setupScrollAutoplay();
+  }
+
+  function setupScrollAutoplay() {
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        const iframe = entry.target;
+        const player = players[iframe.id];
+
+        if (!player || typeof player.playVideo !== "function") return;
+
+        if (entry.isIntersecting) {
+          player.mute();
+          player.playVideo();
+        } else {
+          player.pauseVideo();
+        }
+      });
+    }, {
+      threshold: 0.45
+    });
+
+    document.querySelectorAll(".yt-player").forEach(function(iframe) {
+      observer.observe(iframe);
+    });
+  }
+</script>
+
+</body>
+</html>
