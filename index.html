@@ -269,7 +269,7 @@ p{ font-size:17px; }
 <div class="container">
 
 <h1 class="main-title">
-Force-Regime Downward Compatibility in Contact-Rich Bimanual Imitation Learning
+Hidden Force-Regime Coverage for Contact-Rich Bimanual Imitation Learning
 </h1>
 
 <div class="authors">Anonymous Authors</div>
@@ -291,11 +291,11 @@ Supplementary project page for anonymous review.
 <div class="section">
 <h2>Overview</h2>
 <p>
-Robot learning datasets are often curated for visual and semantic diversity, but contact-rich manipulation also requires coverage over hidden physical regimes. We study this issue in bimanual stopper removal, where the visual scene and task geometry remain nearly fixed while hidden pulling resistance changes.
+Robot learning datasets are often curated for visual and semantic diversity, but contact-rich manipulation also requires coverage over hidden physical regimes. We study this issue through bimanual stopper removal, where appearance and task geometry are held fixed while hidden pulling resistance changes.
 </p>
 
 <p>
-Our results reveal <strong>force-regime downward compatibility</strong>: policies trained under higher resistance transfer reliably to easier regimes, whereas lower-resistance policies fail upward. We further show that a few high-force demonstrations can substantially improve hard-regime reliability, suggesting hidden physical-regime coverage as a practical data-collection principle for contact-rich robot learning.
+Our results reveal force-regime downward compatibility: policies trained under higher resistance transfer reliably to lower-resistance regimes, whereas lower-resistance policies often fail when tested upward. We further show that a few high-force demonstrations can substantially improve hard-regime reliability, suggesting hidden physical-regime coverage as a practical data-collection principle for contact-rich robot learning.
 </p>
 
 
@@ -326,7 +326,7 @@ These qualitative results complement the train--test force-regime matrix by visu
 
 <div class="subsection-title">3 N-Trained Policy</div>
 <div class="subsection-note">
-The policy is trained under the easier 3 N force regime and tested across 0, 3, 6, and 9 N hidden pulling resistance.
+The policy is trained under the easier 3 N force regime and tested across 0, 3, 6, and 9 N hidden pulling-resistance regimes.
 </div>
 
 <div class="yt-grid">
@@ -380,7 +380,7 @@ The policy is trained under the easier 3 N force regime and tested across 0, 3, 
 
 <div class="subsection-title">9 N-Trained Policy</div>
 <div class="subsection-note">
-The policy is trained under the harder 9 N force regime and tested across easier and in-regime resistance conditions.
+The policy is trained under the harder 9 N force regime and tested across lower-resistance and in-regime conditions.
 </div>
 
 <div class="yt-grid">
@@ -440,12 +440,12 @@ The policy is trained under the harder 9 N force regime and tested across easier
 
 <p>
 We further evaluate cross-condition transfer on a real wine bottle with a pumpable vacuum stopper.
-The atmospheric-pressure condition uses 0 pump cycles, while the negative-pressure condition uses 70 pump cycles before each trial, creating higher suction-related removal resistance.
+The atmospheric-pressure condition uses the stopper without pumping, while the negative-pressure condition pumps the stopper 70 times before each trial, creating higher suction-related removal resistance.
 </p>
 
 <div class="subsection-title">AP-Trained Policy</div>
 <div class="subsection-note">
-The policy is trained under atmospheric pressure with 0 pump cycles and tested under both AP and NP conditions.
+The policy is trained under the atmospheric-pressure condition and tested under both AP and NP conditions.
 </div>
 
 <div class="yt-grid">
@@ -519,7 +519,7 @@ The policy is trained under 70-pump negative pressure and tested under both AP a
 
   <p class="subsection-note">
     This supplementary video illustrates how the custom programmable device is reset between trials.
-    For clearer visualization, the device is shown without electrical connection in this demonstration.
+    For clearer visualization, this demonstration shows the device without the electrical connection. 
     During actual experiments, the bottle-body module is wired to the computer for programmable control.
   </p>
 
