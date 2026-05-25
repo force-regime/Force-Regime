@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Force-Regime Downward Compatibility</title>
+<title>Hidden Force-Regime Coverage for Contact-Rich Bimanual Imitation Learning</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
@@ -291,11 +291,11 @@ Supplementary project page for anonymous review.
 <div class="section">
 <h2>Overview</h2>
 <p>
-Robot learning datasets are often curated for visual and semantic diversity, but contact-rich manipulation also requires coverage over hidden physical regimes. We study this issue through bimanual stopper removal, where appearance and task geometry are held fixed while hidden pulling resistance changes.
+Robot learning datasets are often curated for visual and semantic diversity, but contact-rich manipulation also requires coverage over physical regimes hidden from vision. We study this issue through bimanual stopper removal, where appearance and task geometry are held fixed while hidden, motor-referenced pulling resistance changes. Force-regime labels denote the device's motor-side resistance readout, zeroed at the motor-off condition, rather than absolute external removal force.
 </p>
 
 <p>
-Our results reveal force-regime downward compatibility: policies trained under higher resistance transfer reliably to lower-resistance regimes, whereas lower-resistance policies often fail when tested upward. We further show that a few high-force demonstrations can substantially improve hard-regime reliability, suggesting hidden physical-regime coverage as a practical data-collection principle for contact-rich robot learning.
+Our results reveal force-regime downward compatibility: policies trained in higher motor-resistance regimes transfer reliably to lower regimes, including the no-added-motor-resistance baseline, whereas policies trained in lower regimes often fail upward. We further show that a few high-resistance demonstrations can substantially improve hard-regime reliability, suggesting hidden physical-regime coverage as a practical data-collection principle for contact-rich robot learning.
 </p>
 
 
@@ -310,7 +310,7 @@ Our results reveal force-regime downward compatibility: policies trained under h
 
 <div class="section-caption">
   <strong>Project Video.</strong>
-  Overview of the experimental platform, programmable pulling-force regimes, cross-regime policy evaluations, and real-bottle AP/NP validation.
+  Overview of the experimental platform, motor-referenced programmable resistance regimes, cross-regime policy evaluations, and real-bottle AP/NP validation.
 </div>
 </div>
 
@@ -320,116 +320,117 @@ Our results reveal force-regime downward compatibility: policies trained under h
 
 <p>
 The following videos show representative ACT policy rollouts on the programmable stopper-removal device.
-Rows correspond to the training force regime and columns correspond to the test force regime.
-These qualitative results complement the train--test force-regime matrix by visualizing both in-regime execution and off-diagonal transfer.
+Rows correspond to the training motor-resistance regime and columns correspond to the test motor-resistance regime.
+Regime labels denote the device's motor-referenced resistance readout, zeroed at the motor-off condition, rather than absolute external removal force.
+These qualitative results complement the train--test matrix by visualizing both in-regime execution and off-diagonal transfer.
 </p>
 
-<div class="subsection-title">3 N-Trained Policy</div>
+<div class="subsection-title">6 N-Trained Policy</div>
 <div class="subsection-note">
-The policy is trained under the easier 3 N force regime and tested across 0, 3, 6, and 9 N hidden pulling-resistance regimes.
+The policy is trained under the easier 6 N motor-resistance regime and tested across lower, in-regime, and higher hidden-resistance regimes.
 </div>
 
 <div class="yt-grid">
 
 <div class="yt-card"><div class="yt-wrap">
 <iframe
-  id="yt-3n-0n"
+  id="yt-6n-0n"
   class="yt-player"
   src="https://www.youtube.com/embed/3nCS5D1Bua0?enablejsapi=1&mute=1&playsinline=1&rel=0&modestbranding=1"
   allow="autoplay; encrypted-media"
   allowfullscreen>
 </iframe>
-</div><div class="yt-label">3 N-Trained Policy Tested under 0 N Resistance</div></div>
+</div><div class="yt-label">6 N-Trained Policy Tested under 0 N Motor-Resistance Baseline</div></div>
 
 <div class="yt-card"><div class="yt-wrap">
 <iframe
-  id="yt-3n-3n"
+  id="yt-6n-6n"
   class="yt-player"
   src="https://www.youtube.com/embed/tlnyckENcog?enablejsapi=1&mute=1&playsinline=1&rel=0&modestbranding=1"
   allow="autoplay; encrypted-media"
   allowfullscreen>
 </iframe>
-</div><div class="yt-label">In-Regime Execution: 3 N-Trained Policy Tested under 3 N Resistance</div></div>
+</div><div class="yt-label">In-Regime Execution: 6 N-Trained Policy Tested under 6 N Motor-Resistance Regime</div></div>
 
 <div class="yt-card"><div class="yt-wrap">
 <iframe
-  id="yt-3n-6n"
+  id="yt-6n-12n"
   class="yt-player"
   src="https://www.youtube.com/embed/Uqu3Ijqecrw?enablejsapi=1&mute=1&playsinline=1&rel=0&modestbranding=1"
   allow="autoplay; encrypted-media"
   allowfullscreen>
 </iframe>
-</div><div class="yt-label">Upward Transfer: 3 N-Trained Policy Tested under 6 N Resistance</div></div>
+</div><div class="yt-label">Upward Transfer: 6 N-Trained Policy Tested under 12 N Motor-Resistance Regime</div></div>
 
 <div class="yt-card"><div class="yt-wrap">
 <iframe
-  id="yt-3n-9n"
+  id="yt-6n-18n"
   class="yt-player"
   src="https://www.youtube.com/embed/srl3XB_VHSI?enablejsapi=1&mute=1&playsinline=1&rel=0&modestbranding=1"
   allow="autoplay; encrypted-media"
   allowfullscreen>
 </iframe>
-</div><div class="yt-label">Upward Transfer Failure: 3 N-Trained Policy Tested under 9 N Resistance</div></div>
+</div><div class="yt-label">Upward Transfer Failure: 6 N-Trained Policy Tested under 18 N Motor-Resistance Regime</div></div>
 
 </div>
 
 <div class="section-caption">
-  <strong>3 N-Trained Policy.</strong>
+  <strong>6 N-Trained Policy.</strong>
   The lower-force policy succeeds in easier regimes but fails as the hidden pulling resistance increases, illustrating limited upward transfer.
 </div>
 
-<div class="subsection-title">9 N-Trained Policy</div>
+<div class="subsection-title">18 N-Trained Policy</div>
 <div class="subsection-note">
-The policy is trained under the harder 9 N force regime and tested across lower-resistance and in-regime conditions.
+The policy is trained under the harder 18 N motor-resistance regime and tested across lower-resistance and in-regime conditions.
 </div>
 
 <div class="yt-grid">
 
 <div class="yt-card"><div class="yt-wrap">
 <iframe
-  id="yt-9n-0n"
+  id="yt-18n-0n"
   class="yt-player"
   src="https://www.youtube.com/embed/Lt2-2X9F7wk?enablejsapi=1&mute=1&playsinline=1&rel=0&modestbranding=1"
   allow="autoplay; encrypted-media"
   allowfullscreen>
 </iframe>
-</div><div class="yt-label">Downward Transfer: 9 N-Trained Policy Tested under 0 N Resistance</div></div>
+</div><div class="yt-label">Downward Transfer: 18 N-Trained Policy Tested under 0 N Motor-Resistance Baseline</div></div>
 
 <div class="yt-card"><div class="yt-wrap">
 <iframe
-  id="yt-9n-3n"
+  id="yt-18n-6n"
   class="yt-player"
   src="https://www.youtube.com/embed/Of9iHqqWSSw?enablejsapi=1&mute=1&playsinline=1&rel=0&modestbranding=1"
   allow="autoplay; encrypted-media"
   allowfullscreen>
 </iframe>
-</div><div class="yt-label">Downward Transfer: 9 N-Trained Policy Tested under 3 N Resistance</div></div>
+</div><div class="yt-label">Downward Transfer: 18 N-Trained Policy Tested under 6 N Motor-Resistance Regime</div></div>
 
 <div class="yt-card"><div class="yt-wrap">
 <iframe
-  id="yt-9n-6n"
+  id="yt-18n-12n"
   class="yt-player"
   src="https://www.youtube.com/embed/3grfxw67uD8?enablejsapi=1&mute=1&playsinline=1&rel=0&modestbranding=1"
   allow="autoplay; encrypted-media"
   allowfullscreen>
 </iframe>
-</div><div class="yt-label">Downward Transfer: 9 N-Trained Policy Tested under 6 N Resistance</div></div>
+</div><div class="yt-label">Downward Transfer: 18 N-Trained Policy Tested under 12 N Motor-Resistance Regime</div></div>
 
 <div class="yt-card"><div class="yt-wrap">
 <iframe
-  id="yt-9n-9n"
+  id="yt-18n-18n"
   class="yt-player"
   src="https://www.youtube.com/embed/_Dgg9G6eKDE?enablejsapi=1&mute=1&playsinline=1&rel=0&modestbranding=1"
   allow="autoplay; encrypted-media"
   allowfullscreen>
 </iframe>
-</div><div class="yt-label">In-Regime Execution: 9 N-Trained Policy Tested under 9 N Resistance</div></div>
+</div><div class="yt-label">In-Regime Execution: 18 N-Trained Policy Tested under 18 N Motor-Resistance Regime</div></div>
 
 </div>
 
 <div class="section-caption">
-  <strong>9 N-Trained Policy.</strong>
-  The higher-force policy transfers reliably to lower-resistance regimes while remaining successful in its original 9 N regime, illustrating downward compatibility.
+  <strong>18 N-Trained Policy.</strong>
+  The higher-force policy transfers reliably to lower-resistance regimes while remaining successful in its original 18 N regime, illustrating downward compatibility.
 </div>
 
 </div>
@@ -440,7 +441,8 @@ The policy is trained under the harder 9 N force regime and tested across lower-
 
 <p>
 We further evaluate cross-condition transfer on a real wine bottle with a pumpable vacuum stopper.
-The atmospheric-pressure condition uses the stopper without pumping, while the negative-pressure condition pumps the stopper 70 times before each trial, creating higher suction-related removal resistance.
+The atmospheric-pressure (AP) condition uses the stopper without pumping and serves as the easier condition, while the negative-pressure (NP) condition pumps the stopper 70 times before each trial, creating higher suction-related removal resistance.
+A handheld force gauge verifies that NP requires approximately 22 N peak external removal force.
 </p>
 
 <div class="subsection-title">AP-Trained Policy</div>
@@ -508,7 +510,7 @@ The policy is trained under 70-pump negative pressure and tested under both AP a
 
 <div class="section-caption">
   <strong>NP-Trained Policy.</strong>
-  The harder NP-trained policy transfers reliably to the easier AP condition while remaining successful under NP, matching the programmable-device harder-to-easier trend.
+  The harder NP-trained policy transfers reliably to the easier AP condition while remaining successful under NP, reproducing an analogous harder-to-easier trend outside the programmable device.
 </div>
 
 </div>
@@ -542,7 +544,7 @@ The policy is trained under 70-pump negative pressure and tested under both AP a
   <h2>Citation</h2>
   <pre>
 @article{ForceRegime2026,
-title={Force-Regime Downward Compatibility in Contact-Rich Bimanual Imitation Learning},
+title={Hidden Force-Regime Coverage for Contact-Rich Bimanual Imitation Learning},
 author={Anonymous Authors},
 journal={Under Review},
 year={2026}
