@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Hidden Force-Regime Coverage for Contact-Rich Bimanual Imitation Learning</title>
+<title>Hidden Force-Regime Coverage for Extraction-Like Contact-Rich Bimanual Imitation Learning</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
@@ -269,7 +269,7 @@ p{ font-size:17px; }
 <div class="container">
 
 <h1 class="main-title">
-Hidden Force-Regime Coverage for Contact-Rich Bimanual Imitation Learning
+Hidden Force-Regime Coverage for Extraction-Like Contact-Rich Bimanual Imitation Learning
 </h1>
 
 <div class="authors">Anonymous Authors</div>
@@ -298,8 +298,30 @@ Supplementary project page for anonymous review.
 
 <div class="section-caption">
   <strong>Project Video.</strong>
-  Overview of the experimental platform, motor-referenced programmable resistance regimes, cross-regime policy evaluations, and real-bottle AP/NP validation.
+  Overview of the experimental platform, motor-referenced programmable resistance regimes, cross-regime policy evaluations, and real-bottle AP/NP evidence.
 </div>
+</div>
+
+<!-- KEY FINDINGS -->
+<div id="key-findings" class="section">
+<h2>Key Findings</h2>
+<div class="kpi">
+  <div class="card">
+    <div class="big">99.3% vs. 6.9%</div>
+    <div class="small">Pooled off-diagonal downward vs. upward transfer across the programmable resistance regimes.</div>
+  </div>
+  <div class="card">
+    <div class="big">2 / 20 hard-regime demos</div>
+    <div class="small">Adding two 18 N demonstrations raises 12 N success from 11.1% to 82.2% and 18 N success from 0% to 46.7%.</div>
+  </div>
+  <div class="card">
+    <div class="big">3,000+ real-robot rollouts</div>
+    <div class="small">Reported policy-evaluation rollouts, excluding demonstration collection.</div>
+  </div>
+</div>
+<p class="section-caption">
+  <strong>Scope.</strong> Results are demonstrated with ACT on extraction-like stopper-removal tasks; broader policy classes and contact strategies remain future work.
+</p>
 </div>
 
 <!-- ===== Programmable Device Videos ===== -->
@@ -364,7 +386,7 @@ The policy is trained under the easier 6 N motor-resistance regime and tested ac
 
 <div class="section-caption">
   <strong>6 N-Trained Policy.</strong>
-  The lower-force policy succeeds in easier regimes but fails as the hidden pulling resistance increases, illustrating limited upward transfer.
+  The lower-resistance-trained policy succeeds in easier regimes but fails as the hidden pulling resistance increases, illustrating limited upward transfer.
 </div>
 
 <div class="subsection-title">18 N-Trained Policy</div>
@@ -418,14 +440,14 @@ The policy is trained under the harder 18 N motor-resistance regime and tested a
 
 <div class="section-caption">
   <strong>18 N-Trained Policy.</strong>
-  The higher-force policy transfers reliably to lower-resistance regimes while remaining successful in its original 18 N regime, illustrating downward compatibility.
+  The higher-resistance-trained policy transfers reliably to lower-resistance regimes while remaining successful in its original 18 N regime, illustrating downward compatibility.
 </div>
 
 </div>
 
 <!-- ===== Real-Bottle AP/NP Videos ===== -->
 <div id="real-bottle-videos" class="section">
-<h2>Real-Bottle AP/NP Validation Videos</h2>
+<h2>Real-Bottle AP/NP Evidence</h2>
 
 <p>
 We further evaluate cross-condition transfer on a real wine bottle with a pumpable vacuum stopper.
@@ -498,7 +520,7 @@ The policy is trained under 70-pump negative pressure and tested under both AP a
 
 <div class="section-caption">
   <strong>NP-Trained Policy.</strong>
-  The harder NP-trained policy transfers reliably to the easier AP condition while remaining successful under NP, reproducing an analogous harder-to-easier trend outside the programmable device.
+  The harder NP-trained policy transfers reliably to the easier AP condition while remaining successful under NP, providing supporting evidence for an analogous harder-to-easier trend outside the programmable device.
 </div>
 
 </div>
@@ -532,7 +554,7 @@ The policy is trained under 70-pump negative pressure and tested under both AP a
   <h2>Citation</h2>
   <pre>
 @article{ForceRegime2026,
-title={Hidden Force-Regime Coverage for Contact-Rich Bimanual Imitation Learning},
+title={Hidden Force-Regime Coverage for Extraction-Like Contact-Rich Bimanual Imitation Learning},
 author={Anonymous Authors},
 journal={Under Review},
 year={2026}
