@@ -289,6 +289,94 @@ Supplementary project page for anonymous review.
 
 
 
+<div class="section">
+  <h2>Citation</h2>
+  <pre>
+@article{ForceRegime2026,
+title={Hidden Force-Regime Coverage for Extraction-Like Contact-Rich Bimanual Imitation Learning},
+author={Anonymous Authors},
+journal={Under Review},
+year={2026}
+}
+  </pre>
+</div>
+
+<div class="footer">
+  Anonymous project page for supplementary material.
+</div>
+
+</div>
+
+<script>
+  // Load YouTube IFrame API
+  var tag = document.createElement("script");
+  tag.src = "https://www.youtube.com/iframe_api";
+  document.body.appendChild(tag);
+
+  var players = {};
+
+  function onYouTubeIframeAPIReady() {
+    document.querySelectorAll(".yt-player").forEach(function(iframe) {
+      players[iframe.id] = new YT.Player(iframe.id, {
+        events: {
+          "onReady": function(event) {
+            event.target.mute();
+          }
+        }
+      });
+    });
+
+    setupScrollAutoplay();
+  }
+
+  function setupScrollAutoplay() {
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        const iframe = entry.target;
+        const player = players[iframe.id];
+
+        if (!player || typeof player.playVideo !== "function") return;
+
+        if (entry.isIntersecting) {
+          player.mute();
+          player.playVideo();
+        } else {
+          player.pauseVideo();
+        }
+      });
+    }, {
+      threshold: 0.45
+    });
+
+    document.querySelectorAll(".yt-player").forEach(function(iframe) {
+      observer.observe(iframe);
+    });
+  }
+</script>
+
+</body>
+</html><!-- ===== Device Reset Demonstration ===== -->
+<div id="device-reset" class="section">
+  <h2>Device Reset Demonstration</h2>
+
+  <p class="subsection-note">
+    <strong>The programmable device can be reset in under 10 seconds between trials.</strong>
+    The video below shows the complete reset procedure. For clearer visualization, the demonstration is shown without the electrical connection; during actual experiments, the bottle-body module is wired to the computer for programmable control.
+  </p>
+
+  <div class="yt-card" style="max-width:520px;margin:0 auto;">
+    <div class="yt-wrap">
+      <iframe
+        id="yt-device-reset"
+        class="yt-player"
+        src="https://www.youtube.com/embed/9wNMgW9ETIY?enablejsapi=1&mute=1&playsinline=1&rel=0&modestbranding=1"
+        allow="autoplay; encrypted-media"
+        allowfullscreen>
+      </iframe>
+    </div>
+  </div>
+</div>
+
 <!-- MAIN VIDEO -->
 <div id="video" class="section">
 <h2>Project Video</h2>
@@ -525,95 +613,6 @@ The policy is trained under 70-pump negative pressure and tested under both AP a
 
 </div>
 
-<!-- ===== Device Reset Demonstration ===== -->
-<div id="device-reset" class="section">
-  <h2>Device Reset Demonstration</h2>
-
-  <p class="subsection-note">
-    This supplementary video illustrates how the custom programmable device is reset between trials.
-    For clearer visualization, this demonstration shows the device without the electrical connection. 
-    During actual experiments, the bottle-body module is wired to the computer for programmable control.
-  </p>
-
-  <div class="yt-card" style="max-width:520px;margin:0 auto;">
-    <div class="yt-wrap">
-      <iframe
-        id="yt-device-reset"
-        class="yt-player"
-        src="https://www.youtube.com/embed/9wNMgW9ETIY?enablejsapi=1&mute=1&playsinline=1&rel=0&modestbranding=1"
-        allow="autoplay; encrypted-media"
-        allowfullscreen>
-      </iframe>
-    </div>
-  </div>
-
-
-</div>
   
-<div class="section">
-  <h2>Citation</h2>
-  <pre>
-@article{ForceRegime2026,
-title={Hidden Force-Regime Coverage for Extraction-Like Contact-Rich Bimanual Imitation Learning},
-author={Anonymous Authors},
-journal={Under Review},
-year={2026}
-}
-  </pre>
-</div>
 
-<div class="footer">
-  Anonymous project page for supplementary material.
-</div>
 
-</div>
-
-<script>
-  // Load YouTube IFrame API
-  var tag = document.createElement("script");
-  tag.src = "https://www.youtube.com/iframe_api";
-  document.body.appendChild(tag);
-
-  var players = {};
-
-  function onYouTubeIframeAPIReady() {
-    document.querySelectorAll(".yt-player").forEach(function(iframe) {
-      players[iframe.id] = new YT.Player(iframe.id, {
-        events: {
-          "onReady": function(event) {
-            event.target.mute();
-          }
-        }
-      });
-    });
-
-    setupScrollAutoplay();
-  }
-
-  function setupScrollAutoplay() {
-    const observer = new IntersectionObserver(function(entries) {
-      entries.forEach(function(entry) {
-        const iframe = entry.target;
-        const player = players[iframe.id];
-
-        if (!player || typeof player.playVideo !== "function") return;
-
-        if (entry.isIntersecting) {
-          player.mute();
-          player.playVideo();
-        } else {
-          player.pauseVideo();
-        }
-      });
-    }, {
-      threshold: 0.45
-    });
-
-    document.querySelectorAll(".yt-player").forEach(function(iframe) {
-      observer.observe(iframe);
-    });
-  }
-</script>
-
-</body>
-</html>
